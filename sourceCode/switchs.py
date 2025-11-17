@@ -5,6 +5,7 @@ normally open or normally close."""
 
 from components import Component
 
+# In this class,we defin the bassic characteristics of a switch.
 class Switch(Component):
     def __init__(self, name: str, description: str, typeOfSw: str, pieceNumber: str, switchtypeOfSw: str,
                 maxVoltage: float, maxCurrent: float, defaultState: str, toggleType: str):
@@ -16,6 +17,7 @@ class Switch(Component):
         self.defaultState = defaultState
         self.toggleType = toggleType
 
+# Method thad define the characteristics own of each type of switch
     def switchInfo(self):
         switch_info = self.get_info()
         switch_info.update({
@@ -25,3 +27,19 @@ class Switch(Component):
         })
         return switch_info
     
+# Method that checks if the user input values are valid
+    def checkUserSwitchValues(self, maxVoltage: float, maxCurrent: float):
+        if maxVoltage <= 0:
+            raise ValueError("Max Voltage must be a positive value.")
+        if maxCurrent <= 0:
+            raise ValueError("Max Current must be a positive value.")
+        return True     
+
+# Method that simulates the breakdown of the switch under excessive voltage or current
+    def switchBreakdown(self, voltage: float, current: float):
+        if voltage > self.maxVoltage or current > self.maxCurrent:
+            breakdown = True  # Switch breaks down
+            self.defaultState = "broken"  # Set state to broken to simulate failure
+        else:
+            breakdown = False
+        return breakdown
