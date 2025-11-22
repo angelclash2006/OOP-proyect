@@ -5,7 +5,7 @@ class Component:
                 parameters: dict, dimensions:dict):
         self.name = name
         self.description = description
-        self.parameters = parameters
+        self.parameters = {"Power": None, "Voltage": None, "Current": None}
         self.pieceNumber = pieceNumber
         self.dimensions = dimensions
 
