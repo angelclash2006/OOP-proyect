@@ -10,3 +10,9 @@ class Capacitor(Component):
         super().__init__(name, value, types, lenght, width, height, description)
         self.voltageRating = voltageRating
     
+    def breakdown(self, operationVoltage: float) -> str:
+        if operationVoltage > self.voltageRating:
+            return f"The capacitor {self.name} has broken down!"
+        else:
+            return f"The capacitor {self.name} is operating within safe limits."
+        

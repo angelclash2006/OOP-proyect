@@ -11,3 +11,7 @@ print(f"Testing breakdown for capacitor {C1.name} with voltage rating {C1.voltag
 
 if C1.breakdown(testVoltage):
     print(f"The capacitor {C1.name} has broken down at {testVoltage}V")
+
+    #test all
+
+
